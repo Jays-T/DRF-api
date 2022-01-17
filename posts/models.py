@@ -32,6 +32,7 @@ class Post(models.Model):
         ('walden', 'Walden'),
         ('xpro2', 'X-pro II')
     ]
+
     image_filter = models.CharField(
         max_length=32, choices=image_filter_choices, default='normal'
     )
