@@ -15,12 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import root_route
+from .views import root_route, logout_route
 
 urlpatterns = [
     path('', root_route),
     path('admin/', admin.site.urls),
     path('api-auth/', include('rest_framework.urls')),
+    # Override dj-rest-auth logout route to fixe isse with JWT_AUTH_SAMESITE value not being passed to logout view
+    # unless refresh token has expired (known bug)
+    # custom path must be matched first
+    path('dj-rest-auth/logout/', logout_route),
     path('dj-rest-auth/', include('dj_rest_auth.urls')),
     path(
         'dj-rest-auth/registration/', include('dj_rest_auth.registration.urls')
