@@ -59,7 +59,7 @@ DEBUG = 'DEV' in os.environ
 
 ALLOWED_HOSTS = [
     'exchange-a-gram-drf-api.herokuapp.com',
-    'localhost'
+    '127.0.0.1'
 ]
 
 if 'CLIENT_ORIGIN' in os.environ:
@@ -68,7 +68,7 @@ if 'CLIENT_ORIGIN' in os.environ:
     ]
 else:
     CORS_ALLOWED_ORIGIN_REGEXES = [
-        'localhost',
+        '127.0.0.1',
         r"^https://.*\.gitpod\.io$",
     ]
 
@@ -150,7 +150,6 @@ DATABASES = {
     )
     )
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
